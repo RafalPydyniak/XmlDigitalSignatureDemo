@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signature">
+    <ds:SignedInfo Id="SignedInfo">
+        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+        <ds:Reference Id="Reference1" URI="#Object1">
+            <ds:Transforms>
+                <ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+            </ds:Transforms>
+            <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <ds:DigestValue>MSSyDFPSgf3rB+NZHCM6XI2Al/Q=</ds:DigestValue>
+        </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue Id="SignatureValue">OY6mWv6KIeOCFbsZ/C157n2Rs2yf+wXDz7Tu54oUSs2Qo1UXxfUvNk7TYDsN3xBx
+        K/tPphhQZctKxE7ykP8P51TVwvyWQPURcOCM83IXJMWWer8OS27AD3UU97dhAppw
+        vDfJS4r+qqtp2IoutCVzm277BG1gCPu0Y80hiiFqmz4h6ztS/ni2+rudhUW3VKCH
+        hsBb3h7hSLQmjeLPz5dJPNpfgaEGtJthIL7ge0qjDTLkFrathCF2ARxGQXwJb2se
+        x2oFGFQzZF5egOivlubJUasymKQumsE9skK7VSQAsc9NJ/YlEidAKVR2zoe4bNP5
+        lsiEwFxI/nbufOMKTiyg+g==
+    </ds:SignatureValue>
+    <ds:KeyInfo Id="KeyInfo">
+        <ds:X509Data>
+            <ds:X509Certificate>MIIFwzCCBKugAwIBAgIUMUxTllBmgyaIe2Zbu4HVL7SN1U8wDQYJKoZIhvcNAQEF
+                BQAwczELMAkGA1UEBhMCUEwxKDAmBgNVBAoMH0tyYWpvd2EgSXpiYSBSb3psaWN6
+                ZW5pb3dhIFMuQS4xJDAiBgNVBAMMG0NPUEUgU1pBRklSIC0gS3dhbGlmaWtvd2Fu
+                eTEUMBIGA1UEBRMLTnIgd3Bpc3U6IDYwHhcNMTcxMDMwMDcwMDAwWhcNMTkxMDMw
+                MDcwMDAwWjBoMQswCQYDVQQGEwJQTDEbMBkGA1UEBRMSUEVTRUw6IDk0MDgzMTA0
+                MzcxMRgwFgYDVQQDDA9SYWZhxYIgUHlkeW5pYWsxDzANBgNVBCoMBlJhZmHFgjER
+                MA8GA1UEBAwIUHlkeW5pYWswggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+                AQCbvCi//yxT8ECWSf48/4QTOTUzhlelIZQ2/gYzF0uKPM4P7v72hgAHWsqtQCWY
+                3j3T+aYC8JNx9VnWXZnMn9ZPxWzSIom8W33XstH9/2G96YgCiP7BAVxqjjLVACpP
+                HPlEPlJbp3xm9wagoUAk/+gfnqwlud/9ueYUXwtczFaOlvTykg87i/lKErCKmyeA
+                RlvvM7JvAPblVnMPdLoCzhsOdlTkg8iMzyLyTHmBm88vjakD3f8cqDnR8RJeqj6j
+                qm6m0sy5Iyoxs2EGs2GUFi5daob31WQkUye0wZV+dGoOUYnSmuJjhS4dyCelzryY
+                UoF2hrv5PisfgpWuWUyUM/LBAgMBAAGjggJYMIICVDAMBgNVHRMBAf8EAjAAMIHH
+                BgNVHSABAf8EgbwwgbkwgbYGCSqEaAGG9yMBATCBqDBaBggrBgEFBQcCAjBODExD
+                ZXJ0eWZpa2F0IHd5ZGFueSB6Z29kbmllIHogWmHFgsSFY3puaWtpZW0gSSBkbyBS
+                b3pwb3J6xIVkemVuaWEgbnIgOTEwLzIwMTQuMEoGCCsGAQUFBwIBFj5odHRwOi8v
+                d3d3LmVsZWt0cm9uaWN6bnlwb2RwaXMucGwvaW5mb3JtYWNqZS9kb2t1bWVudHkt
+                aS11bW93eTAJBgNVHQkEAjAAMHUGCCsGAQUFBwEDBGkwZzAIBgYEAI5GAQQwRgYG
+                BACORgEFMDwwOhY0aHR0cHM6Ly93d3cuZWxla3Ryb25pY3pueXBvZHBpcy5wbC9Q
+                S0lEaXNjbG9zdXJlLnBkZhMCcGwwEwYGBACORgEGMAkGBwQAjkYBBgEwgYQGCCsG
+                AQUFBwEBBHgwdjAuBggrBgEFBQcwAYYiaHR0cDovL29jc3AuZWxla3Ryb25pY3pu
+                eXBvZHBpcy5wbDBEBggrBgEFBQcwAoY4aHR0cDovL2VsZWt0cm9uaWN6bnlwb2Rw
+                aXMucGwvY2VydHlmaWthdHkvb3prNTJfMjAxNy5kZXIwDgYDVR0PAQH/BAQDAgZA
+                MB8GA1UdIwQYMBaAFMxBKnaYLkp6GdqRNt/Yfzk/1MKuMEAGA1UdHwQ5MDcwNaAz
+                oDGGL2h0dHA6Ly9lbGVrdHJvbmljem55cG9kcGlzLnBsL2NybC9jcmxfb3prNTIu
+                Y3JsMA0GCSqGSIb3DQEBBQUAA4IBAQBnVLCrcrngTb34Nys4OD249bonD6F4Ifis
+                mUdip0xUnXV82OFgQ0Zo6XPCBr0mxhlqNVUgHp8bux1B1Yd0HDfIErkW3hMySnWB
+                q3+Ky5UXtivDgiMx3i+gY4MFvWbZlvfcy0+XcO89gpBuqcuQSITi5Wv9Z1YCpTIy
+                lxPHeALidE2i63+KysELpg5VMSBkRq8AwGlBijo/xR4xzt4hBayrH3udjD44FJtN
+                Z00wuTPoZUQlWf2y/ARB8lBhRkRn9OMmT5SdbMWJ/cEXc22EH0KNJKKGww4AmZYM
+                Z6Y4qM/iQ5m8yqnLcE5bTCd8QvdD1Iw6/EnyxHluM0V9N7PooPnb
+            </ds:X509Certificate>
+        </ds:X509Data>
+        <ds:KeyValue>
+            <ds:RSAKeyValue>
+                <ds:Modulus>m7wov/8sU/BAlkn+PP+EEzk1M4ZXpSGUNv4GMxdLijzOD+7+9oYAB1rKrUAlmN49
+                    0/mmAvCTcfVZ1l2ZzJ/WT8Vs0iKJvFt917LR/f9hvemIAoj+wQFcao4y1QAqTxz5
+                    RD5SW6d8ZvcGoKFAJP/oH56sJbnf/bnmFF8LXMxWjpb08pIPO4v5ShKwipsngEZb
+                    7zOybwD25VZzD3S6As4bDnZU5IPIjM8i8kx5gZvPL42pA93/HKg50fESXqo+o6pu
+                    ptLMuSMqMbNhBrNhlBYuXWqG99VkJFMntMGVfnRqDlGJ0priY4UuHcgnpc68mFKB
+                    doa7+T4rH4KVrllMlDPywQ==
+                </ds:Modulus>
+                <ds:Exponent>AQAB</ds:Exponent>
+            </ds:RSAKeyValue>
+        </ds:KeyValue>
+    </ds:KeyInfo>
+    <ds:Object>
+        <xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Id="QualifyingProperties"
+                                    Target="#Signature">
+            <xades:SignedProperties Id="SignedProperties">
+                <xades:SignedSignatureProperties Id="SignedSignatureProperties">
+                    <xades:SigningTime>2018-02-07T14:26:30</xades:SigningTime>
+                    <xades:SigningCertificate>
+                        <xades:Cert>
+                            <xades:CertDigest/>
+                            <xades:IssuerSerial>
+                                <ds:X509IssuerName>serialNumber=Nr wpisu: 6,CN=COPE SZAFIR - Kwalifikowany,O=Krajowa
+                                    Izba Rozliczeniowa S.A.,C=PL
+                                </ds:X509IssuerName>
+                                <ds:X509SerialNumber>281442685874414352278353172637018995178655831375
+                                </ds:X509SerialNumber>
+                            </xades:IssuerSerial>
+                        </xades:Cert>
+                    </xades:SigningCertificate>
+                </xades:SignedSignatureProperties>
+                <xades:SignedDataObjectProperties Id="SignedDataObjectProperties">
+                    <xades:DataObjectFormat ObjectReference="#Reference1">
+                        <xades:Description>MIME-Version: 1.0 Content-Type: text/xml Content-Transfer-Encoding: binary
+                            Content-Disposition: filename="46000099_00002_PIT-11_2017.XML"
+                        </xades:Description>
+                        <xades:ObjectIdentifier>
+                            <xades:Identifier Qualifier="OIDAsURI">
+                                http://www.certum.pl/OIDAsURI/signedFile/1.2.616.1.113527.3.1.1.3.1
+                            </xades:Identifier>
+                            <xades:Description>Dokument xml wysłany przez aplikacje Q-solution E-pit</xades:Description>
+                            <xades:DocumentationReferences>
+                                <xades:DocumentationReference>http://www.certum.pl/OIDAsURI/signedFile.pdf
+                                </xades:DocumentationReference>
+                            </xades:DocumentationReferences>
+                        </xades:ObjectIdentifier>
+                        <xades:MimeType>text/xml</xades:MimeType>
+                    </xades:DataObjectFormat>
+                    <xades:CommitmentTypeIndication>
+                        <xades:CommitmentTypeId>
+                            <xades:Identifier>http://uri.etsi.org/01903/v1.2.2#ProofOfApproval</xades:Identifier>
+                        </xades:CommitmentTypeId>
+                        <xades:AllSignedDataObjects/>
+                    </xades:CommitmentTypeIndication>
+                </xades:SignedDataObjectProperties>
+            </xades:SignedProperties>
+            <xades:UnsignedProperties Id="UnsignedProperties"/>
+        </xades:QualifyingProperties>
+    </ds:Object>
+    <ds:Object Id="Object1" MimeType="text/xml">
+        <Deklaracja xmlns="http://crd.gov.pl/wzor/2016/01/11/3066/"
+                    xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2011/06/21/eD/DefinicjeTypy/"
+                    xmlns:zr="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2015/12/31/eD/PITR/"
+                    xmlns:zzu="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2011/10/07/eD/ORDZU/">
+            <Naglowek>
+                <KodFormularza kodPodatku="PIT" kodSystemowy="PIT-11 (23)" rodzajZobowiazania="Z" wersjaSchemy="1-0E">
+                    PIT-11
+                </KodFormularza>
+                <WariantFormularza>23</WariantFormularza>
+                <CelZlozenia poz="P_6">1</CelZlozenia>
+                <Rok>2017</Rok>
+                <KodUrzedu>1440</KodUrzedu>
+            </Naglowek>
+            <Podmiot1 rola="Płatnik">
+                <OsobaNiefizyczna>
+                    <etd:NIP>5251929351</etd:NIP>
+                    <etd:PelnaNazwa>CIECH TRADING SPÓŁKA AKCYJNA</etd:PelnaNazwa>
+                    <etd:REGON>012785291</etd:REGON>
+                </OsobaNiefizyczna>
+            </Podmiot1>
+            <Podmiot2 rola="Podatnik">
+                <OsobaFizyczna>
+                    <PESEL>92100802123</PESEL>
+                    <ImiePierwsze>ALEKSANDRA</ImiePierwsze>
+                    <Nazwisko>STĘPIEŃ</Nazwisko>
+                    <DataUrodzenia>1992-10-08</DataUrodzenia>
+                </OsobaFizyczna>
+                <AdresZamieszkania rodzajAdresu="RAD">
+                    <KodKraju poz="P_18A">PL</KodKraju>
+                    <Wojewodztwo>MAZOWIECKIE</Wojewodztwo>
+                    <Powiat>WARSZAWA</Powiat>
+                    <Gmina>WARSZAWA</Gmina>
+                    <Ulica poz="P_22">IŁŻECKA</Ulica>
+                    <NrDomu poz="P_23">77</NrDomu>
+                    <NrLokalu poz="P_24">45</NrLokalu>
+                    <Miejscowosc poz="P_25">WARSZAWA</Miejscowosc>
+                    <KodPocztowy poz="P_26">00-877</KodPocztowy>
+                    <Poczta>WARSZAWA</Poczta>
+                </AdresZamieszkania>
+            </Podmiot2>
+            <PozycjeSzczegolowe>
+                <P_10>1</P_10>
+                <P_28>1</P_28>
+                <P_29>32813.42</P_29>
+                <P_30>890.00</P_30>
+                <P_31>31923.42</P_31>
+                <P_33>2408</P_33>
+                <P_70>4441.18</P_70>
+                <P_72>2166.27</P_72>
+                <P_76>2</P_76>
+            </PozycjeSzczegolowe>
+            <Pouczenie>Za uchybienie obowiązkom płatnika grozi odpowiedzialność przewidziana w Kodeksie karnym
+                skarbowym.
+            </Pouczenie>
+        </Deklaracja>
+    </ds:Object>
+</ds:Signature>
