@@ -22,10 +22,12 @@ public class Main {
         KeyPair keyPair = kpg.generateKeyPair();
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        InputSource inputSource = new InputSource(new StringReader("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<example>\n" +
                 "    <message>Hello World!</message>\n" +
-                "</example>"));
+                "</example>";
+        System.out.println(xmlString);
+        InputSource inputSource = new InputSource(new StringReader(xmlString));
         Document document = documentBuilder.parse(inputSource);
         xmlSigner.sign(document, keyPair.getPublic(), keyPair.getPrivate());
     }

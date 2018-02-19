@@ -4,6 +4,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import javax.xml.crypto.MarshalException;
+import javax.xml.crypto.XMLStructure;
+import javax.xml.crypto.dom.DOMStructure;
 import javax.xml.crypto.dsig.*;
 import javax.xml.crypto.dsig.dom.DOMSignContext;
 import javax.xml.crypto.dsig.keyinfo.KeyInfo;
@@ -61,7 +63,7 @@ public class XmlSignerImpl implements XmlSigner {
 
     private List<XMLObject> getObjectsFromData(Document xmlToSign, XMLSignatureFactory xmlSignFactory) {
         List<XMLObject> objects = new ArrayList<>();
-        Node content = xmlToSign.getFirstChild();
+        XMLStructure content = new DOMStructure(xmlToSign.getFirstChild());
         XMLObject data = xmlSignFactory.newXMLObject(Collections.singletonList(content), "Data", "text/xml", null);
         objects.add(data);
         return objects;
