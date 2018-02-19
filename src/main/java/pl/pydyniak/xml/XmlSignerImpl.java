@@ -20,6 +20,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.security.*;
@@ -32,9 +33,9 @@ import java.util.List;
  */
 public class XmlSignerImpl implements XmlSigner {
     @Override
-    public Document sign(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey) throws XmlSigningException {
+    public Document sign(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey, File destinationFile) throws XmlSigningException {
         try {
-            return tryToSignOrThrow(xmlToSign, publicKey, privateKey);
+            return tryToSignOrThrow(xmlToSign, publicKey, privateKey, destinationFile);
         } catch (Exception e) {
             //TODO this is just a demo, in real life we want to do something better with exceptions
             e.printStackTrace();
@@ -42,13 +43,12 @@ public class XmlSignerImpl implements XmlSigner {
         }
     }
 
-    private Document tryToSignOrThrow(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyException, ParserConfigurationException, MarshalException, XMLSignatureException, TransformerException, FileNotFoundException {
+    private Document tryToSignOrThrow(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey, File resultFile) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyException, ParserConfigurationException, MarshalException, XMLSignatureException, TransformerException, FileNotFoundException {
         XMLSignature xmlSignature = prepareXmlSignature(publicKey, xmlToSign);
         Document doc = getEmptyDocument();
         DOMSignContext domSignContext = new DOMSignContext(privateKey, doc);
         xmlSignature.sign(domSignContext);
 
-        String resultFile = "xmlOut.xml";
         saveDocumentToFile(doc, resultFile);
         return xmlToSign;
     }
@@ -91,7 +91,7 @@ public class XmlSignerImpl implements XmlSigner {
         return dbf.newDocumentBuilder().newDocument();
     }
 
-    private void saveDocumentToFile(Document doc, String resultFile) throws TransformerException, FileNotFoundException {
+    private void saveDocumentToFile(Document doc, File resultFile) throws TransformerException, FileNotFoundException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.transform(

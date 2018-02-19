@@ -6,6 +6,7 @@ import pl.pydyniak.xml.XmlSignerImpl;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.io.StringReader;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -29,6 +30,6 @@ public class Main {
         System.out.println(xmlString);
         InputSource inputSource = new InputSource(new StringReader(xmlString));
         Document document = documentBuilder.parse(inputSource);
-        xmlSigner.sign(document, keyPair.getPublic(), keyPair.getPrivate());
+        xmlSigner.sign(document, keyPair.getPublic(), keyPair.getPrivate(), new File("build/xmlOut.xml"));
     }
 }
