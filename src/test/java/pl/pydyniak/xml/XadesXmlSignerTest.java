@@ -45,7 +45,8 @@ public class XadesXmlSignerTest {
         Mockito.when(principalMock.getName()).thenReturn("Mocked issuerDN");
         Mockito.when(certificate.getIssuerDN()).thenReturn(principalMock);
         Mockito.when(certificate.getSerialNumber()).thenReturn(new BigInteger("123456"));
-        File signedFile = xmlSigner.sign(document, keyPair.getPublic(), keyPair.getPrivate(), new File("build/xmlOut.xml"), certificate);
+        Mockito.when(certificate.getPublicKey()).thenReturn(keyPair.getPublic());
+        File signedFile = xmlSigner.sign(document,new File("build/xmlOut.xml"), keyPair.getPrivate(),  certificate);
 
         Assert.assertTrue(signedFile.exists());
         Document signedFileDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(signedFile);

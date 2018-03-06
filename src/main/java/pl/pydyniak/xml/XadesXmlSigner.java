@@ -13,6 +13,7 @@ import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -32,10 +33,24 @@ import java.util.*;
  * Created by rafal on 2/17/18.
  */
 public class XadesXmlSigner implements XmlSigner {
+
+
     @Override
-    public File sign(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey, File destinationFile, X509Certificate certificate) throws XmlSigningException {
+    public File sign(File xmlToSign, File destinationFile, PrivateKey privateKey, X509Certificate certificate) throws XmlSigningException {
         try {
-            return tryToSignOrThrow(xmlToSign, publicKey, privateKey, destinationFile, certificate);
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document xmlDocument = documentBuilder.parse(xmlToSign);
+            return sign(xmlDocument, destinationFile, privateKey, certificate);
+        }catch (Exception ex) {
+            throw new XmlSigningException();
+        }
+    }
+
+    @Override
+    public File sign(Document xmlToSign,File destinationFile, PrivateKey privateKey, X509Certificate certificate) throws XmlSigningException {
+        try {
+            return tryToSignOrThrow(xmlToSign, destinationFile, privateKey, certificate);
         } catch (Exception e) {
             //TODO this is just a demo, in real life we want to do something better with exceptions
             e.printStackTrace();
@@ -43,8 +58,8 @@ public class XadesXmlSigner implements XmlSigner {
         }
     }
 
-    private File tryToSignOrThrow(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey, File resultFile, X509Certificate certificate) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyException, ParserConfigurationException, MarshalException, XMLSignatureException, TransformerException, FileNotFoundException {
-        XMLSignature xmlSignature = prepareXmlSignature(publicKey, xmlToSign, certificate);
+    private File tryToSignOrThrow(Document xmlToSign,  File resultFile, PrivateKey privateKey, X509Certificate certificate) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyException, ParserConfigurationException, MarshalException, XMLSignatureException, TransformerException, FileNotFoundException {
+        XMLSignature xmlSignature = prepareXmlSignature(certificate.getPublicKey(), xmlToSign, certificate);
         Document doc = getEmptyDocument();
         DOMSignContext domSignContext = new DOMSignContext(privateKey, doc);
         xmlSignature.sign(domSignContext);

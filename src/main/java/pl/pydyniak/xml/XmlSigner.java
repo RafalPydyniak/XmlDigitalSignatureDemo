@@ -15,5 +15,6 @@ import java.security.cert.X509Certificate;
  * Created by rafal on 2/17/18.
  */
 public interface XmlSigner {
-    File sign(Document xmlToSign, PublicKey publicKey, PrivateKey privateKey, File destinationFile, X509Certificate cert) throws XmlSigningException;
+    File sign(Document xmlToSign,File destinationFile, PrivateKey privateKey, X509Certificate certificate) throws XmlSigningException;
+    File sign(File xmlToSign,File destinationFile, PrivateKey privateKey, X509Certificate certificate) throws XmlSigningException;
 }
