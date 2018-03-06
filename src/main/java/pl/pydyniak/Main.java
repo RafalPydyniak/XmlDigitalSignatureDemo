@@ -42,6 +42,6 @@ public class Main {
         SmartCardCertificate certificate = certificates.get(Integer.parseInt(pickedCertificate));
         System.out.println(certificate);
 
-        
+
     }
 }
