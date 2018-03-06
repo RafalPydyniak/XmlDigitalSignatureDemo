@@ -11,6 +11,7 @@ import javax.xml.crypto.dsig.dom.DOMSignContext;
 import javax.xml.crypto.dsig.keyinfo.KeyInfo;
 import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
+import javax.xml.crypto.dsig.keyinfo.X509Data;
 import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
 import javax.xml.parsers.DocumentBuilder;
@@ -62,6 +63,7 @@ public class XadesXmlSigner implements XmlSigner {
         XMLSignature xmlSignature = prepareXmlSignature(certificate.getPublicKey(), xmlToSign, certificate);
         Document doc = getEmptyDocument();
         DOMSignContext domSignContext = new DOMSignContext(privateKey, doc);
+        domSignContext.setDefaultNamespacePrefix("ds");
         xmlSignature.sign(domSignContext);
 
         saveDocumentToFile(doc, resultFile);
@@ -72,7 +74,7 @@ public class XadesXmlSigner implements XmlSigner {
         XMLSignatureFactory xmlSignFactory = XMLSignatureFactory.getInstance("DOM");
         List<XMLObject> objects = getObjectsFromData(xmlToSign, xmlSignFactory, certificate);
         SignedInfo signedInfo = getSignedInfo(xmlSignFactory);
-        KeyInfo keyInfo = getKeyInfo(publicKey, xmlSignFactory);
+        KeyInfo keyInfo = getKeyInfo(publicKey, xmlSignFactory, certificate);
         return xmlSignFactory.newXMLSignature(signedInfo, keyInfo, objects, "Signature", "SignatureValue");
     }
 
@@ -196,22 +198,23 @@ public class XadesXmlSigner implements XmlSigner {
     }
 
     private SignedInfo getSignedInfo(XMLSignatureFactory xmlSignFactory) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
-        DigestMethod digestMethod = xmlSignFactory.newDigestMethod(DigestMethod.SHA1, null);
-        Transform transform = xmlSignFactory.newTransform(CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS, (TransformParameterSpec) null);
-        Reference dataReference = xmlSignFactory.newReference("#Data", digestMethod, Collections.singletonList(transform), null, "Data-Reference");
-//        Reference signedPropertiesReference
-//                = xmlSignFactory.newReference("#SignedProperties", digestMethod, Collections.singletonList(transform), "http://uri.etsi.org/01903#SignedProperties", "SignedProperties-Reference");
+        Reference dataReference = createDataReference(xmlSignFactory, "#Data", null, "Data-Reference");
         SignatureMethod signatureMethod = xmlSignFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null);
         CanonicalizationMethod canonicalizationMethod = xmlSignFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE, (C14NMethodParameterSpec) null);
-
-        return xmlSignFactory.newSignedInfo(canonicalizationMethod, signatureMethod, Arrays.asList(dataReference));
-//        return xmlSignFactory.newSignedInfo(canonicalizationMethod, signatureMethod, Arrays.asList(dataReference, signedPropertiesReference));
+        return xmlSignFactory.newSignedInfo(canonicalizationMethod, signatureMethod, Collections.singletonList(dataReference));
     }
 
-    private KeyInfo getKeyInfo(PublicKey publicKey, XMLSignatureFactory xmlSignFactory) throws KeyException {
+    private Reference createDataReference(XMLSignatureFactory xmlSignFactory, String s, String o, String s2) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
+        DigestMethod digestMethod = xmlSignFactory.newDigestMethod(DigestMethod.SHA1, null);
+        Transform transform = xmlSignFactory.newTransform(CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS, (TransformParameterSpec) null);
+        return xmlSignFactory.newReference(s, digestMethod, Collections.singletonList(transform), o, s2);
+    }
+
+    private KeyInfo getKeyInfo(PublicKey publicKey, XMLSignatureFactory xmlSignFactory, X509Certificate certificate) throws KeyException {
         KeyInfoFactory keyInfoFactory = xmlSignFactory.getKeyInfoFactory();
+        X509Data x509Data = keyInfoFactory.newX509Data(Collections.singletonList(certificate));
         KeyValue keyValue = keyInfoFactory.newKeyValue(publicKey);
-        return keyInfoFactory.newKeyInfo(Collections.singletonList(keyValue));
+        return keyInfoFactory.newKeyInfo(Arrays.asList(keyValue, x509Data));
     }
 
     private Document getEmptyDocument() throws ParserConfigurationException {
