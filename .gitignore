@@ -8,3 +8,4 @@
 *.ipr
 .idea/
 build/
+out/
